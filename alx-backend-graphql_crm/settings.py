@@ -14,3 +14,8 @@ INSTALLED_APPS = [
 GRAPHENE = {
     "SCHEMA": "alx_backend_graphql_crm.schema.schema"  # point to schema
 }
+
+DEBUG = True   # during development
+
+ALLOWED_HOSTS = ["*"]  # allow all hosts for local dev
+
