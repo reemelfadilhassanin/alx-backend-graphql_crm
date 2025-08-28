@@ -1,0 +1,7 @@
+django-crontab
+Django>=3.2
+django-crontab
+gql
+requests
+celery
+...
