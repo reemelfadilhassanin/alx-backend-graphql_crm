@@ -1,5 +1,6 @@
 import datetime
 import requests  # Required for making HTTP requests to the GraphQL endpoint
+from datetime import datetime
 
 from celery import shared_task
 
