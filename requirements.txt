@@ -5,3 +5,6 @@ gql
 requests
 celery
 ...
+celery
+django-celery-beat
+redis

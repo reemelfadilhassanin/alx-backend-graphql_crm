@@ -1,5 +1,8 @@
 INSTALLED_APPS += ['django_crontab']
 
+INSTALLED_APPS += [
+    'django_celery_beat',
+]
 CRONJOBS = [
     ('*/5 * * * *', 'crm.cron.log_crm_heartbeat'),
 ]
@@ -17,3 +20,15 @@ CRONJOBS = [
     ('*/5 * * * *', 'crm.cron.log_crm_heartbeat'),  # existing heartbeat job
     ('0 */12 * * *', 'crm.cron.update_low_stock'),
 ]
+CELERY_BROKER_URL = 'redis://localhost:6379/0'
+# Optionally:
+# CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
+# Accept content options etc. as needed
+from celery.schedules import crontab
+
+CELERY_BEAT_SCHEDULE = {
+    'generate-crm-report': {
+        'task': 'crm.tasks.generate_crm_report',
+        'schedule': crontab(day_of_week='mon', hour=6, minute=0),
+    },
+}
